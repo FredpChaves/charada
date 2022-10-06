@@ -1,0 +1,263 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  padding-right: 32px;
+  padding-left: 32px;
+}
+.title-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.main-input{
+  flex-grow: 1;
+  margin-top: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.try-container{
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.letter-container{
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
+  margin-bottom: 0.25rem;
+  background-color: rgb(51, 65, 85);
+  border: 2px solid rgb(148, 163, 184);
+  border-radius: 0.25rem;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  &.has-text {
+    border-color: #888;
+    animation-name: letter-pop;
+    animation-duration: 120ms;
+  }
+  &.match {
+    background-color: #6aaa64;
+    border-color: #6aaa64;
+    color: white;
+  }
+
+  &.partial {
+    background-color: #c9b458;
+    border-color: #c9b458;
+    color: white;
+  }
+
+  &.wrong {
+    background-color: #86888a;
+    border-color: #86888a;
+    color: white;
+  }
+
+  &.fold {
+    transform: scaleY(0);
+  }
+
+}
+
+.keyboard-container {
+  margin-bottom: 12px;
+
+  .row {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+
+    &.row1 {
+      margin-left: 23px;
+    }
+  }
+
+  .key {
+    height: 58px;
+    min-width: 42px;
+    margin-right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #d3d6da;
+    font-size: 13px;
+    font-weight: bold;
+    user-select: none;
+  }
+    .key >.enter {
+      padding: 0 11px;
+      text-transform: uppercase;
+    }
+
+    .key >.match {
+      background-color: #6aaa64;
+      color: white;
+    }
+
+    .key >partial {
+      background-color: #c9b458;
+      color: white;
+    }
+
+    .key >.wrong {
+      background-color: #86888a;
+      color: white;
+    }
+
+    .key >:hover {
+      background-color: #bbb;
+    }
+}
+
+.key >.enter {
+  padding: 0 11px;
+  text-transform: uppercase;
+}
+.msg {
+  position: absolute;
+  top: 120px;
+  padding: 20px 28px;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.msg > .show {
+  opacity: 0;
+}
+
+.msg > .fade-out{
+  opacity: 1;
+  transition: opacity 500ms;
+}
+.share-dialog-container {
+  background-color: rgba(255, 255, 255, .5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  display: flex;
+
+  .show {
+    visibility: visible;
+  }
+
+  .share-dialog {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.2), 0 4px 10px -6px rgb(0 0 0 / 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 300ms ease-out;
+
+    button {
+      background-color: #6aaa64;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 12px 24px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+@keyframes letter-pop {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.15); }
+	100% { transform: scale(1); }
+}
+
+
+// Stole from wordle css.
+@keyframes shake {
+	10%,
+	90% {
+	  	transform: translateX(-1px);
+	}
+
+	20%,
+	80% {
+		transform: translateX(2px);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: translateX(-4px);
+	}
+
+	40%,
+	60% {
+		transform: translateX(4px);
+	}
+}
+
+// Again, got this from wordle css:)
+@keyframes bounce {
+	0%, 20% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-30px);
+	}
+	50% {
+		transform: translateY(5px);
+	}
+	60% {
+		transform: translateY(-15px);
+	}
+	80% {
+		transform: translateY(2px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}

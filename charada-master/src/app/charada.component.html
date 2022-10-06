@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="title-container">
+    <h1 class="title">Charada</h1>
+    <div class="subtitle">José Pedro Camboim Homenhuck</div>
+  </div>
+
+  <div class="main-input">
+    <div class="try-container" *ngFor="let try of tries">
+      <div class="letter-container" *ngFor="let letter of try.letters"
+          [class.has-text] = "letter.text !== ''">
+        {{letter.text}}
+      </div>
+    </div>
+  </div>
+
+  <div class="teclado-container">
+    <div [class]="['row' + i, 'row'].join(' ')"
+		    *ngFor="let row of keyboardRows; let i = index">
+			<div *ngFor="let key of row" [class]="getKeyClass(key)"
+			    [class.enter]="key === 'Enter'"
+					(click)="handleClickKey(key)">
+				<div *ngIf="key !== 'Backspace'; else backspace">
+				  {{key}}
+				</div>
+				<ng-template #backspace>
+					<img src="../assets/backspace.svg"/>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+
+  <div class="msg" [class.show] = "msg !== ''" [class.fade-out] = "fadeOutInfoMsg">
+    {{msg}}
+  </div>
+</div>

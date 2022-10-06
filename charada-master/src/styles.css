@@ -1,0 +1,13 @@
+html, body{
+  background-color: rgb(15, 23, 42);
+  color: #f2f2f2;
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
